@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+  padding: 0 15px 15px 15px;
+  border-bottom: 1px solid #7c7f85;
+}
+
+.submenu-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.submenu-container span {
+  opacity: 0.6;
+  padding: 8px 10px;
+}
+
+.submenu-container .active {
+  opacity: 1;
+  border-radius: 6px;
+  background-color: #393f4a;
+}
+
+.exchange-text {
+  color: #69a6fa;
+}
