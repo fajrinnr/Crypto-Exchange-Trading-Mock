@@ -15,9 +15,9 @@ export default function HeaderChart(props: HeaderChartProps) {
         style={{ width: 120 }}
         onChange={props.setSymbol}
         options={[
-          { value: "ethusdt", label: "ETH" },
-          { value: "btcusdt", label: "BTC" },
-          { value: "bnbusdt", label: "BNB" },
+          { value: "ETH", label: "ETH" },
+          { value: "BTC", label: "BTC" },
+          { value: "DOGE", label: "DOGE" },
         ]}
       />
       <Radio.Group

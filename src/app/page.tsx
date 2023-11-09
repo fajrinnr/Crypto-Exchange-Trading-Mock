@@ -1,31 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
-import api from "../config/api";
-import OrderBook from "@/components/Charts/OrderBook";
+import OrderBook from "@/components/Contents/OrderBook";
 import dynamic from "next/dynamic";
-import HeaderChart from "@/components/Charts/Header";
+import HeaderChart from "@/components/Contents/Header";
 import "antd/dist/antd";
 
 const DynamicCandlestickChart = dynamic(
-  () => import("../components/Charts/CandleStick"),
+  () => import("../components/Contents/CandleStick"),
   {
     ssr: false,
   }
 );
 export default function Home() {
-  const [data3, setData3] = useState<any>(null);
-  const [symbol, setSymbol] = useState<any>("btcusdt");
+  const [symbol, setSymbol] = useState<any>("BTC");
   const [interval, setIntervalLocal] = useState<any>("1d");
-
-  useEffect(() => {
-    api
-      .get(`/api/v3/klines?symbol=${symbol.toUpperCase()}&interval=${interval}`)
-      .then((data) => {
-        setData3(data.data);
-      });
-  }, [interval, symbol]);
 
   return (
     <>
@@ -38,9 +28,9 @@ export default function Home() {
             interval={interval}
             setIntervalLocal={setIntervalLocal}
           />
-          <DynamicCandlestickChart data={data3} />
+          <DynamicCandlestickChart symbol={symbol} interval={interval} />
         </div>
-        <OrderBook symbol={symbol} />
+        <OrderBook symbol={symbol} interval={interval} />
       </div>
     </>
   );

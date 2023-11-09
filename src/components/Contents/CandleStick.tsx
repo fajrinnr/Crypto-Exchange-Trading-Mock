@@ -1,13 +1,25 @@
+import { useEffect, useState } from "react";
 import { ApexOptions } from "apexcharts";
 import ReactApexChart from "react-apexcharts";
 
 interface CandlestickChartProps {
-  data: {
-    x: string;
-    y: number[];
-  }[];
+  symbol: string;
+  interval?: string;
 }
 const CandlestickChart = (props: CandlestickChartProps) => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const testWS = new WebSocket(
+      `ws://websocket-mock.onrender.com/?symbol=${props.symbol}&interval=${props.interval}`
+    );
+    testWS.onmessage = (event) => {
+      setData(JSON.parse(event.data).data);
+    };
+
+    return () => {
+      testWS.close();
+    };
+  }, [props.interval, props.symbol]);
   const chartOptions: ApexOptions = {
     chart: {
       type: "candlestick",
@@ -50,8 +62,8 @@ const CandlestickChart = (props: CandlestickChartProps) => {
 
   const series = [
     {
-      data: props.data
-        ? props.data.map((value: any) => ({
+      data: data
+        ? data?.map((value: any) => ({
             x: new Date(value[0]),
             y: [
               Number(value[1]).toFixed(2),

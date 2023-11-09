@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <div className={styles.container}>
       <h1>
-        Pintu <span className={styles["exchange-text"]}>Exchange</span>
+        Mock <span className={styles["exchange-text"]}>Exchange</span>
       </h1>
       <div className={styles["submenu-container"]}>
         <span>Trade</span>
@@ -14,7 +14,3 @@ export default function Header() {
     </div>
   );
 }
-
-// https://rapidapi.com/sparior/api/yahoo-finance15/
-// https://iexcloud.io/docs/api/#iex-cloud-legacy-api-docs
-// VCZNJE5PAIT2FO0B
