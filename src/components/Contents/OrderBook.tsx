@@ -24,7 +24,7 @@ export default function OrderBook(props: OrderBookProps) {
   const [data, setData] = useState<any>(null);
   useEffect(() => {
     const testWS = new WebSocket(
-      `ws://websocket-mock.onrender.com/?symbol=${props.symbol}&interval=${props.interval}`
+      `wss://websocket-mock.onrender.com/?symbol=${props.symbol}&interval=${props.interval}`
     );
     testWS.onmessage = (event) => {
       setData(JSON.parse(event.data));

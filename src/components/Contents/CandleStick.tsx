@@ -10,7 +10,7 @@ const CandlestickChart = (props: CandlestickChartProps) => {
   const [data, setData] = useState([]);
   useEffect(() => {
     const testWS = new WebSocket(
-      `ws://websocket-mock.onrender.com/?symbol=${props.symbol}&interval=${props.interval}`
+      `wss://websocket-mock.onrender.com/?symbol=${props.symbol}&interval=${props.interval}`
     );
     testWS.onmessage = (event) => {
       setData(JSON.parse(event.data).data);
